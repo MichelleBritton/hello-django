@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 # This will allow us to use the say_hello function inside the urls file
-from todo.views import get_todo_list, add_item
+from todo.views import get_todo_list, add_item, edit_item
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +25,8 @@ urlpatterns = [
     # - the url that the user is going to type in,
     # - the view function that it's going to return
     # - name parameter
-    path("", get_todo_list, name='get_todo_list'),
-    path("add", add_item, name='add')
+    path('', get_todo_list, name='get_todo_list'),
+    path('add', add_item, name='add'),
+    # The angular bracket syntax is common in Django urls and is the mechanism by which the item ID makes its way from links or forms in templates
+    path('edit/<item_id>', edit_item, name='edit'),
 ]
